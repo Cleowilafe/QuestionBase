@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block category %}
+    <!-- Título da Página -->
+    <div class="container mt-5 text-center">
+        <h2>Posts na categoria: {{ tag }}</h2>
+        <div class="row" id="postContainer">
+            {% for post in posts %}
+            <!-- Exibe cada post que tem a tag correspondente -->
+            <div class="col-md-4 col-sm-6 col-12 mb-4 post-item {% if loop.index > 6 %}d-none{% endif %}">
+                <div class="card h-100"> <!-- Adicionando h-100 para garantir que todos os cards tenham a mesma altura -->
+                    <!-- Garantir que as imagens tenham o mesmo tamanho -->
+                    <img src="{{ url_for('static', filename='images/' + post.image) }}" class="card-img-top" alt="Imagem do Post" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ url_for('post', title=post.title) }}" class="stretched-link">{{ post.title }}</a>
+                        </h5>
+                        <p class="card-text">{{ post.sinopse }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Verifica se há mais de 6 posts para mostrar o botão "Mostrar Mais" -->
+        {% if posts|length > 6 %}
+        <div class="text-center">
+            <button class="btn" id="loadMoreBtn">
+                <i class="bi bi-chevron-down"></i> <!-- Ícone de seta para baixo -->
+                Mostrar Mais
+            </button>
+        </div>
+        {% endif %}
+    </div>
+
+         <!-- Link para o arquivo CSS -->
+    <link href="{{ url_for('static', filename='btn.css') }}" rel="stylesheet">
+
+    <!-- Link para o arquivo JS -->
+    <script src="{{ url_for('static', filename='btn.js') }}"></script>
+
+{% endblock %}

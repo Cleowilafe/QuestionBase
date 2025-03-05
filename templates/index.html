@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block index %}
+    <!-- Carousel -->
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for img in images %}
+            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                <img src="{{ url_for('static', filename='images/' + img) }}" class="d-block w-100" alt="Imagem do Carrossel">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Recent Posts Section -->
+    <div class="container text-center mt-5">
+        <h2 class="text">Postagens Recentes</h2>
+        <div class="row" id="postContainer">
+            {% for post in posts %}
+            <!-- Post -->
+            <div class="col-md-4 col-sm-6 col-12 mb-4 post-item {% if loop.index > 6 %}d-none{% endif %}">
+                <div class="card h-100">
+                    <!-- Exibe a imagem associada a cada post -->
+                    <img src="{{ url_for('static', filename='images/' + post.image) }}" class="card-img-top" alt="Imagem do Post" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-bottom: 10px;">
+                            <a href="{{ url_for('post', title=post.title) }}" class="stretched-link">{{ post.title }}</a>
+                        </h5>
+                        <p class="card-text" style="margin-top: 0;">{{ post.sinopse }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if posts|length > 6 %}
+        <div class="text-center">
+            <button class="btn" id="loadMoreBtn">
+                <i class="bi bi-chevron-down"></i> <!-- Ícone de seta para baixo -->
+                Mostrar Mais
+            </button>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+       
+    </script>
+ <!-- Link para o arquivo CSS -->
+ <link href="{{ url_for('static', filename='btn.css') }}" rel="stylesheet">
+
+ <!-- Link para o arquivo JS -->
+ <script src="{{ url_for('static', filename='btn.js') }}"></script>
+
+{% endblock %}

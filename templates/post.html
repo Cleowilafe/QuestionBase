@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block post %}
+    <!-- Conteúdo principal -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Coluna principal: Post único -->
+            <div class="col-md-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        {% if post %}
+                            <h3 class="card-title">{{ post.title }}</h3>
+                            <p class="card-text">
+                                <i class="bi bi-person"></i> Escrito por: {{ post.autor }} |
+                                <i class="bi bi-calendar"></i> {{ post.date_post }}
+                            </p>
+                            <div class="post-content">
+                                <p>{{ post.content | safe }}</p> <!-- Exibe o conteúdo do arquivo de texto -->
+                            </div>
+
+                            <!-- Exibindo a fonte -->
+                            {% if post.font %}
+                                <p><strong>Fonte:</strong> {{ post.font }}</p>
+                            {% endif %}
+                            
+                        {% else %}
+                            <p>Post não encontrado.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna lateral: Últimos posts e Categorias -->
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Últimas Postagens</h5>
+                        <ul class="list-unstyled">
+                            {% for recent_post in recent_posts %}
+                                <li><a href="{{ url_for('post', title=recent_post['title']) }}">{{ recent_post['title'] }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Seção de Categorias -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Categorias</h5>
+                        {% if post.tag %}
+                            <ul>
+                            {% for tag in post.tag %}
+                                <li><a href="{{ url_for('category', title=tag) }}">{{ tag }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para renderizar o MathJax -->
+    <script type="text/javascript">
+        window.onload = function() {
+            // Reprocessa o conteúdo LaTeX com MathJax assim que a página é carregada
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        };
+    </script>
+{% endblock %}

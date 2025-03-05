@@ -1,0 +1,79 @@
+A resolução da equação diferencial ordinária \( Y'' + Y = 0 \) por meio de uma série de potências pode ser realizada utilizando uma transformação que se baseia na aproximação polinomial de Taylor. A solução é expressa como:
+
+\begin{equation}
+y = \sum_{n=0}^{\infty} a_n x^n  \tag{1}
+\end{equation}
+
+onde \( a_n \) são os coeficientes da série, que podem ser determinados a partir das condições iniciais ou 
+pela substituição da série na equação diferencial. Como o problema em questão não apresenta condições iniciais, 
+os coeficientes \( a_n \) são incógnitas. A partir da derivada segunda da equação (1), temos:
+
+\begin{equation}
+y'' = \sum_{n=2}^{\infty} n (n-1) a_n x^{n-2}  \tag{2}
+\end{equation}
+
+Agora, substituindo a equação (2) e equação (1) na equação inicial, obtemos:
+
+\begin{equation}
+\sum_{n=2}^{\infty} n (n-1) a_n x^{n-2} + \sum_{n=0}^{\infty} a_n x^n = 0 \tag{3}
+\end{equation}
+
+Para combinar as duas somatórias, é necessário ajustar os índices para que ambas comecem a partir de \( n = 0 \). Para isso, fazemos a substituição \( n \to n+2 \) na primeira soma. Assim, obtemos:
+
+\begin{equation}
+\sum_{n=0}^{\infty} (n+2)(n+1) a_{n+2} x^n + \sum_{n=0}^{\infty} a_n x^n = 0 \tag{4}
+\end{equation}
+
+Agora, podemos combinar as duas somatórias, resultando na seguinte expressão:
+
+\begin{equation}
+\sum_{n=0}^{\infty} \left( (n+2)(n+1) a_{n+2} + a_n \right) x^n = 0 \tag{5}
+\end{equation}
+
+Essa equação pode ser usada para determinar os coeficientes \( a_n \) de maneira recursiva. Como a equação deve ser válida para todos os valores de \( x \), o coeficiente que acompanha cada potência de \( x^n \) deve ser igual a zero. Portanto, temos a relação recursiva:
+
+\begin{equation}
+(n+2)(n+1) a_{n+2} + a_n = 0 \tag{6}
+\end{equation}
+
+ou seja, os coeficientes \( a_n \) seguem a relação:
+
+\begin{equation}
+a_{n+2} = -\frac{a_n}{(n+2)(n+1)} \tag{7}
+\end{equation}
+
+Note que, na equação (7), a fórmula de recorrência é expressa de forma simples, o que permite calcular os coeficientes da série de maneira recursiva. Ao expandir para os 4 primeiros termos (\( n = 0, 1, 2, 3 \)), temos:
+
+\begin{equation}
+a_2 = -\frac{a_0}{2}, \quad
+a_3 = -\frac{a_1}{6}, \quad
+a_4 = \frac{a_0}{24}, \quad
+a_5 = \frac{a_1}{120} \tag{8}
+\end{equation}
+
+A partir disso, podemos observar que os coeficientes \( a_n \) seguem um padrão alternado para os índices ímpares e pares. Esse padrão permite expressar a solução completa da equação diferencial, substituindo os coeficientes nas equações (1) e (5):
+
+\[
+y(x) = a_0 \left( 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots \right) + a_1 \left( x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots \right)
+\]
+
+onde \( a_0 \) e \( a_1 \) são os coeficientes iniciais que podem ser ajustados conforme as condições iniciais do problema.
+
+Essa expressão representa a solução geral da equação diferencial \( Y'' + Y = 0 \) em termos de uma série de potências, envolvendo funções seno e cosseno em sua forma analítica, já que \( y(x) \) pode ser reescrita como:
+
+\[
+y(x) = a_0 \cos(x) + a_1 \sin(x)
+\]
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{/static/images/cal.jpg}
+    \caption{Your caption here}
+    \label{fig:yourlabel}
+\end{figure}
+
+
+onde os coeficientes \( a_0 \) e \( a_1 \) são determinados pelas condições iniciais do problema.
+
+
+
