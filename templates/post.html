@@ -67,11 +67,14 @@
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         };
     </script>
-<style>
+
+    <style>
         /* Ajuste para o MathJax e conteúdo */
         .post-content {
             font-size: 1.1rem;
             line-height: 1.5;
+            word-wrap: break-word;  /* Garante que o texto será quebrado corretamente, sem ultrapassar a tela */
+            white-space: normal;    /* Impede que o texto fique em uma única linha longa */
         }
 
         /* Tornar as equações mais responsivas */
@@ -98,4 +101,5 @@
             }
         }
     </style>
+
 {% endblock %}
