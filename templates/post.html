@@ -7,7 +7,7 @@
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         {% if post %}
-                            <h3 class="card-title">{{ post.title }}</h3>
+                            <h3 class="card-title display-4">{{ post.title }}</h3>
                             <p class="card-text">
                                 <i class="bi bi-person"></i> Escrito por: {{ post.autor }} |
                                 <i class="bi bi-calendar"></i> {{ post.date_post }}
@@ -19,7 +19,6 @@
                             {% if post.font %}
                                 <p><strong>Fonte:</strong> {{ post.font }}</p>
                             {% endif %}
-                            
                         {% else %}
                             <p>Post não encontrado.</p>
                         {% endif %}
@@ -60,5 +59,101 @@
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         };
     </script>
+
+    <style>
+        .post-content {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        .MathJax {
+            font-size: 1.2rem;
+            max-width: 100%;
+            margin-top: 1rem;
+            word-wrap: break-word;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .MathJax_Display {
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 767px) {
+            .card-body {
+                padding: 1rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+
+            .post-content p {
+                font-size: 1rem;
+            }
+
+            .list-unstyled li {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .card-body {
+                padding: 0.8rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+
+            .post-content {
+                font-size: 0.95rem;
+            }
+
+            .col-md-8, .col-md-4 {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .card-title, .card-text, .post-content p, .list-unstyled li {
+                font-size: 0.9rem;
+            }
+
+            .MathJax {
+                order: -1;
+                font-size: 1rem;
+                word-wrap: break-word;
+                white-space: normal;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+
+            .post-content {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .post-content, .MathJax {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                width: 100%;
+            }
+        }
+    </style>
 
 {% endblock %}
