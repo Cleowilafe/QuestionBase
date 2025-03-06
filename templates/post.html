@@ -7,17 +7,17 @@
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         {% if post %}
-                            <h3 class="card-title display-4">{{ post.title }}</h3>
-                            <p class="card-text">
+                            <h3 class="card-title display-4 text-center">{{ post.title }}</h3>
+                            <p class="card-text text-center">
                                 <i class="bi bi-person"></i> Escrito por: {{ post.autor }} |
                                 <i class="bi bi-calendar"></i> {{ post.date_post }}
                             </p>
-                            <div class="post-content">
+                            <div class="post-content text-center">
                                 <p>{{ post.content | safe }}</p>
                             </div>
 
                             {% if post.font %}
-                                <p><strong>Fonte:</strong> {{ post.font }}</p>
+                                <p class="text-center"><strong>Fonte:</strong> {{ post.font }}</p>
                             {% endif %}
                         {% else %}
                             <p>Post não encontrado.</p>
@@ -56,6 +56,21 @@
 
     <script type="text/javascript">
         window.onload = function() {
+            // Garantir que o MathJax seja carregado corretamente, sem reiniciar fontes ou aumentar o tamanho do texto
+            MathJax.Hub.Config({
+                "HTML-CSS": {
+                    scale: 100,  // Manter o tamanho padrão
+                    linebreaks: { automatic: true },  // Manter a quebra automática de linha
+                    width: "100%"  // Usar a largura da tela disponível
+                },
+                tex2jax: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']],  // Definir delimitadores de matemática inline
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']]  // Definir delimitadores de matemática display
+                },
+                messageStyle: "none",  // Desativa mensagens do MathJax para evitar interferência
+                "JS": { "enable": false }  // Desabilita as configurações JS do MathJax
+            });
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         };
     </script>
@@ -66,15 +81,19 @@
             line-height: 1.5;
             word-wrap: break-word;
             white-space: normal;
+            text-align: center;  /* Garante que o texto do post fique centralizado */
         }
 
+        /* Estilo para as equações MathJax */
         .MathJax {
             font-size: 1.2rem;
             max-width: 100%;
-            margin-top: 1rem;
             word-wrap: break-word;
             white-space: normal;
             overflow-wrap: break-word;
+            word-break: break-word;
+            display: inline-block; /* As equações inline agora se ajustam ao fluxo do texto */
+            text-align: center; /* Centraliza as equações inline */
         }
 
         .MathJax_Display {
@@ -83,6 +102,8 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
             word-break: break-word;
+            width: 100%; /* Garante que as equações se ajustem à largura do container */
+            max-width: 100%;
         }
 
         .post-content img {
