@@ -6,7 +6,7 @@ app = Flask(__name__)
 posts = [
     {
         'autor': 'Cleo Will',
-        'title': 'Resolução da EDO com série de potências,
+        'title': 'Resolução da EDO com série de potências',
         'date_post': '2025-03-05',
         'image': 'cal.jpg',
         'sinopse': 'Neste post, abordamos a resolução de uma Equação Diferencial Ordinária (EDO) utilizando o método das séries de potências, uma técnica fundamental na análise de soluções aproximadas para equações complexas.',
