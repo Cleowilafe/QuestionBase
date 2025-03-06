@@ -6,10 +6,10 @@ app = Flask(__name__)
 posts = [
     {
         'autor': 'Cleo Will',
-        'title': 'Resolução da EDO Y'' + Y = 0',
+        'title': 'Resolução da EDO com série de potências,
         'date_post': '2025-03-05',
         'image': 'cal.jpg',
-        'sinopse': 'Resolução de uma EDO usando série de potências',
+        'sinopse': 'Neste post, abordamos a resolução de uma Equação Diferencial Ordinária (EDO) utilizando o método das séries de potências, uma técnica fundamental na análise de soluções aproximadas para equações complexas.',
         'content_file': 'edopotseries.txt',
         'tag': ['Equações diferenciais'],
         'font':' Boyce, W. E., & DiPrima, R. C. (2017). Equações Diferenciais Elementares (10ª ed.). Wiley.'
