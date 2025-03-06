@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 
 {% block post %}
-    <!-- Conteúdo principal -->
     <div class="container mt-5">
         <div class="row">
-            <!-- Coluna principal: Post único -->
-            <div class="col-md-8">
+            <div class="col-md-8 col-12">
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         {% if post %}
@@ -15,10 +13,9 @@
                                 <i class="bi bi-calendar"></i> {{ post.date_post }}
                             </p>
                             <div class="post-content">
-                                <p>{{ post.content | safe }}</p> <!-- Exibe o conteúdo do arquivo de texto -->
+                                <p>{{ post.content | safe }}</p>
                             </div>
 
-                            <!-- Exibindo a fonte -->
                             {% if post.font %}
                                 <p><strong>Fonte:</strong> {{ post.font }}</p>
                             {% endif %}
@@ -30,8 +27,7 @@
                 </div>
             </div>
 
-            <!-- Coluna lateral: Últimos posts e Categorias -->
-            <div class="col-md-4">
+            <div class="col-md-4 col-12">
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Últimas Postagens</h5>
@@ -43,7 +39,6 @@
                     </div>
                 </div>
 
-                <!-- Seção de Categorias -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Categorias</h5>
@@ -60,44 +55,90 @@
         </div>
     </div>
 
-    <!-- Script para renderizar o MathJax -->
     <script type="text/javascript">
         window.onload = function() {
-            // Reprocessa o conteúdo LaTeX com MathJax assim que a página é carregada
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         };
     </script>
 
     <style>
-        /* Ajuste para o MathJax e conteúdo */
         .post-content {
             font-size: 1.1rem;
             line-height: 1.5;
-            word-wrap: break-word;  /* Garante que o texto será quebrado corretamente, sem ultrapassar a tela */
-            white-space: normal;    /* Impede que o texto fique em uma única linha longa */
+            word-wrap: break-word;
+            white-space: normal;
         }
 
-        /* Tornar as equações mais responsivas */
         .MathJax {
-            font-size: 1.2rem; /* Ajuste o tamanho das equações */
-            max-width: 100%;  /* Garantir que as equações não saiam da tela */
-            overflow-x: auto; /* Permitir que as equações longas sejam roláveis horizontalmente */
+            font-size: 1.2rem;
+            max-width: 100%;
+            overflow-x: auto;
         }
 
-        /* Tornar as imagens responsivas */
         .post-content img {
             max-width: 100%;
             height: auto;
         }
 
-        /* Para dispositivos pequenos, ajustar os títulos, parágrafos, e imagens */
         @media (max-width: 767px) {
             .post-content {
-                font-size: 1rem; /* Diminuir o tamanho da fonte para telas pequenas */
+                font-size: 1rem;
             }
 
             .card-body {
                 padding: 1rem;
+            }
+
+            .col-md-8 {
+                margin-bottom: 20px;
+            }
+
+            .col-md-4 {
+                margin-bottom: 20px;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+
+            .post-content p {
+                font-size: 1rem;
+            }
+
+            .list-unstyled li {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card-body {
+                padding: 0.8rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+
+            .post-content {
+                font-size: 0.95rem;
+            }
+
+            .col-md-8, .col-md-4 {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .post-content img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .card-title, .card-text, .post-content p, .list-unstyled li {
+                font-size: 0.9rem;
             }
         }
     </style>
