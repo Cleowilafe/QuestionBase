@@ -65,14 +65,6 @@ Essa expressão representa a solução geral da equação diferencial \( Y'' + Y
 y(x) = a_0 \cos(x) + a_1 \sin(x)
 \]
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth]{/static/images/cal.jpg}
-    \caption{Your caption here}
-    \label{fig:yourlabel}
-\end{figure}
-
-
 onde os coeficientes \( a_0 \) e \( a_1 \) são determinados pelas condições iniciais do problema.
 
 
