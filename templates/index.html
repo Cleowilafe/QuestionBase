@@ -22,41 +22,39 @@
 
     <!-- Recent Posts Section -->
     <div class="container text-center mt-5">
-        <h2 class="text">Postagens Recentes</h2>
+        <h2 class="text-primary mb-4">Postagens Recentes</h2>
         <div class="row" id="postContainer">
             {% for post in posts %}
             <!-- Post -->
             <div class="col-md-4 col-sm-6 col-12 mb-4 post-item {% if loop.index > 6 %}d-none{% endif %}">
-                <div class="card h-100">
-                    <!-- Exibe a imagem associada a cada post -->
-                    <img src="{{ url_for('static', filename='images/' + post.image) }}" class="card-img-top" alt="Imagem do Post" style="object-fit: cover; height: 200px;">
+                <div class="card h-100 shadow-sm border-0 rounded-lg">
                     <div class="card-body">
-                        <h5 class="card-title" style="margin-bottom: 10px;">
-                            <a href="{{ url_for('post', title=post.title) }}" class="stretched-link">{{ post.title }}</a>
+                        <h5 class="card-title mb-3">
+                            <a href="{{ url_for('post', title=post.title) }}" class="stretched-link text-decoration-none text-dark">{{ post.title }}</a>
                         </h5>
-                        <p class="card-text" style="margin-top: 0;">{{ post.sinopse }}</p>
+                        <p class="card-text text-muted">{{ post.sinopse }}</p>
+                    </div>
+                    <div class="card-footer text-muted text-end">
+                        <small>Publicado em: {{ post.date_post }}</small>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
         {% if posts|length > 6 %}
-        <div class="text-center">
-            <button class="btn" id="loadMoreBtn">
-                <i class="bi bi-chevron-down"></i> <!-- Ícone de seta para baixo -->
-                Mostrar Mais
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" id="loadMoreBtn">
+                <i class="bi bi-chevron-down"></i> Mostrar Mais
             </button>
         </div>
         {% endif %}
     </div>
 
-    <script>
-       
-    </script>
- <!-- Link para o arquivo CSS -->
- <link href="{{ url_for('static', filename='btn.css') }}" rel="stylesheet">
+    <!-- Link para o arquivo CSS -->
+    <link href="{{ url_for('static', filename='btn.css') }}" rel="stylesheet">
 
- <!-- Link para o arquivo JS -->
- <script src="{{ url_for('static', filename='btn.js') }}"></script>
-
+    <!-- Link para o arquivo JS -->
+    <script src="{{ url_for('static', filename='btn.js') }}"></script>
 {% endblock %}
+
+
