@@ -67,4 +67,35 @@
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         };
     </script>
+<style>
+        /* Ajuste para o MathJax e conteúdo */
+        .post-content {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Tornar as equações mais responsivas */
+        .MathJax {
+            font-size: 1.2rem; /* Ajuste o tamanho das equações */
+            max-width: 100%;  /* Garantir que as equações não saiam da tela */
+            overflow-x: auto; /* Permitir que as equações longas sejam roláveis horizontalmente */
+        }
+
+        /* Tornar as imagens responsivas */
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Para dispositivos pequenos, ajustar os títulos, parágrafos, e imagens */
+        @media (max-width: 767px) {
+            .post-content {
+                font-size: 1rem; /* Diminuir o tamanho da fonte para telas pequenas */
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+        }
+    </style>
 {% endblock %}
